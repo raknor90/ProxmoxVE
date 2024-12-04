@@ -37,7 +37,7 @@ function default_settings() {
   CORE_COUNT="$var_cpu"
   RAM_SIZE="$var_ram"
   BRG="vmbr0"
-  NET="192.168.1.59"
+  NET="192.168.1.59/24"
   GATE="192.168.1.1"
   APT_CACHER=""
   APT_CACHER_IP=""

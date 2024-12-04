@@ -73,7 +73,7 @@ msg_ok "Setting set for MyJDownloader"
 msg_info "Install NordVPN"
 mkdir /usr/local/NordVPN
 cd /usr/local/NordVPN
-sh <(curl -sSf https://downloads.nordcdn.com/apps/linux/install.sh)
+# sh <(curl -sSf https://downloads.nordcdn.com/apps/linux/install.sh)
 
 motd_ssh
 customize

@@ -88,7 +88,7 @@ $cifs_host
 $share_name
 $smb_username
 $smb_password
-$$NEXTID
+$NEXTID
 $lxc_username
 ANSWER
 msg_ok "Mounted download dir from cifs share "

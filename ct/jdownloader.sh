@@ -22,8 +22,8 @@ APP="JDownloader"
 var_disk="2"
 var_cpu="2"
 var_ram="512"
-var_os="alpine"
-var_version="3.19"
+var_os="debian"
+var_version="12"
 variables
 color
 catch_errors
@@ -56,6 +56,18 @@ function update_script() {
 header_info
 check_container_storage
 check_container_resources
+
+if NEWTOKEN=$(whiptail --backtitle "Proxmox VE Helper Scripts" --passwordbox "Set the ADMIN_TOKEN" 10 58 3>&1 1>&2 2>&3); then
+  if [[ -z "$NEWTOKEN" ]]; then exit; fi
+  if ! command -v argon2 >/dev/null 2>&1; then apt-get install -y argon2 &>/dev/null; fi
+  TOKEN=$(echo -n ${NEWTOKEN} | argon2 "$(openssl rand -base64 32)" -t 2 -m 16 -p 4 -l 64 -e)
+  sed -i "s|ADMIN_TOKEN=.*|ADMIN_TOKEN='${TOKEN}'|" /opt/vaultwarden/.env
+  if [[ -f /opt/vaultwarden/data/config.json ]]; then
+    sed -i "s|\"admin_token\":.*|\"admin_token\": \"${TOKEN}\"|" /opt/vaultwarden/data/config.json
+  fi
+  systemctl restart vaultwarden
+fi
+
 if [[ ! -d /var ]]; then msg_error "No ${APP} Installation Found!"; exit; fi
 msg_info "Updating ${APP} LXC"
 apt-get update &>/dev/null

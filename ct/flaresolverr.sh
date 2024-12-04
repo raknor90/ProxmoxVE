@@ -4,7 +4,7 @@ source <(curl -s https://raw.githubusercontent.com/community-scripts/ProxmoxVE/m
 # Author: tteck (tteckster)
 # Co-Author: remz1337
 # License: MIT
-# https://github.com/community-scripts/ProxmoxVE/raw/main/LICENSE
+# https://github.com/raknor90/ProxmoxVE/raw/main/LICENSE
 
 function header_info {
 clear

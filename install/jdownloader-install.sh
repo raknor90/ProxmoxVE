@@ -15,7 +15,7 @@ network_check
 update_os
 
 msg_info "Installing Dependencies"
-$STD apt install default-jre
+$STD apt-get install -y default-jre
 # $STD rc-service java -jar /usr/local/JDownloader/JDownloader.jar > log.txt 2>&1 &
 msg_ok "Installed Dependencies"
 

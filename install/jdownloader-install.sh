@@ -16,18 +16,7 @@ update_os
 
 msg_info "Installing Dependencies"
 $STD apk add openjdk11
-# $STD apt-get install -y sudo
-# $STD apt-get install -y mc
 msg_ok "Installed Dependencies"
-
-# get_latest_release() {
-#   curl -sL https://api.github.com/repos/$1/releases/latest | grep '"tag_name":' | cut -d'"' -f4
-# }
-
-# DOCKER_LATEST_VERSION=$(get_latest_release "moby/moby")
-# PORTAINER_LATEST_VERSION=$(get_latest_release "portainer/portainer")
-# PORTAINER_AGENT_LATEST_VERSION=$(get_latest_release "portainer/agent")
-# DOCKER_COMPOSE_LATEST_VERSION=$(get_latest_release "docker/compose")
 
 msg_info "Installing JDownloader"
 
@@ -48,10 +37,43 @@ echo '{
   "devicename": "'$devicename'",
   "autoconnectenabledv2": true,
 }' > ./cfg/org.jdownloader.api.myjdownloader.MyJDownloaderSettings.json
-cat ./cfg/org.jdownloader.api.myjdownloader.MyJDownloaderSettings.json
+
+echo '{
+  "freshinstall": false,
+  "enabled": true
+}' > ./cfg/org.jdownloader.extensions.eventscripter.EventScripterExtension.json
+
+echo '[
+  {
+    "eventTrigger": "INTERVAL",
+    "enabled": true,
+    "name": "Auto-update",
+    "script": "disablePermissionChecks(); if (callAPI('update', 'isUpdateAvailable') && isDownloadControllerIdle() && !callAPI('linkcrawler', 'isCrawling') && !callAPI('linkgrabberv2', 'isCollecting') && !callAPI('extraction', 'getQueue').length > 0) { callAPI('update', 'restartAndUpdate'); }",
+    "eventTriggerSettings": {
+      "lastFire": 1594799412187,
+      "interval": 43200000,
+      "isSynchronous": false
+    },
+    "id": 1594796988140
+  }
+]' > ./cfg/org.jdownloader.extensions.eventscripter.EventScripterExtension.scripts.json
+
+echo '{
+    "defaultdownloadfolder": "/jdownloader/downloads"
+}' > ./cfg/org.jdownloader.settings.GeneralSettings.json
+
 java -jar JDownloader.jar &
 msg_ok "Setting up MyJDownloader"
 msg_ok "Installed JDownloader"
+
+motd_ssh
+customize
+
+# msg_info "Cleaning up"
+# $STD apt-get -y autoremove
+# $STD apt-get -y autoclean
+# msg_ok "Cleaned"
+
 
 # read -r -p "Would you like to add Portainer? <y/N> " prompt
 # if [[ ${prompt,,} =~ ^(y|yes)$ ]]; then
@@ -89,11 +111,3 @@ msg_ok "Installed JDownloader"
 #   chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
 #   msg_ok "Installed Docker Compose $DOCKER_COMPOSE_LATEST_VERSION"
 # fi
-
-motd_ssh
-customize
-
-# msg_info "Cleaning up"
-# $STD apt-get -y autoremove
-# $STD apt-get -y autoclean
-# msg_ok "Cleaned"

@@ -24,6 +24,7 @@ var_cpu="2"
 var_ram="512"
 var_os="alpine"
 var_version="3.19"
+lxc_id==$NEXTID
 variables
 color
 catch_errors
@@ -86,7 +87,7 @@ $cifs_host
 $share_name
 $smb_username
 $smb_password
-$NEXTIDls 
+$lxc_id
 $lxc_username
 ANSWER
 msg_ok "Mount download dir from cifs share"

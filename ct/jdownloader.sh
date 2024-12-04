@@ -70,14 +70,14 @@ build_container
 description
 msg_info "Mount download dir from cifs share"
 
-read -p "Enter the folder name (e.g., nas_rwx): " folder_name
-read -p "Enter the CIFS hostname or IP (e.g., NAS): " cifs_host
-read -p "Enter the share name (e.g., media): " share_name
-read -p "Enter SMB username: " smb_username
-read -sp "Enter SMB password: " smb_password && echo
+# read -p "Enter the folder name (e.g., nas_rwx): " folder_name
+# read -p "Enter the CIFS hostname or IP (e.g., NAS): " cifs_host
+# read -p "Enter the share name (e.g., media): " share_name
+# read -p "Enter SMB username: " smb_username
+# read -sp "Enter SMB password: " smb_password && echo
 # read -p "Enter the LXC ID: " lxc_id
-read -p "Enter the username within the LXC that needs access to the share (e.g., jellyfin, plex): " lxc_username
+# read -p "Enter the username within the LXC that needs access to the share (e.g., jellyfin, plex): " lxc_username
 
-bash -c "$(wget -qO - https://gist.githubusercontent.com/NorkzYT/14449b247dae9ac81ba4664564669299/raw/7d2d0fce37a8896823c9035a2e765d14a96058c0/proxmox-lxc-cifs-share.sh)" < $folder_name $cifs_host $share_name $smb_username $smb_password $NEXTID $lxc_username
+bash -c "$(wget -qO - https://gist.githubusercontent.com/NorkzYT/14449b247dae9ac81ba4664564669299/raw/7d2d0fce37a8896823c9035a2e765d14a96058c0/proxmox-lxc-cifs-share.sh)" #< $folder_name $cifs_host $share_name $smb_username $smb_password $NEXTID $lxc_username
 msg_ok "Updated ${APP} LXC"
 msg_ok "Completed Successfully!\n"

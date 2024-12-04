@@ -24,8 +24,8 @@ var_cpu="2"
 var_ram="512"
 var_os="alpine"
 var_version="3.19"
-lxc_id==$CT_ID
-echo 'HIER: '$lxc_id', '$CT_ID', '$NEXTID
+
+echo 'HIER: '$CT_ID', '$NEXTID
 variables
 color
 catch_errors

@@ -15,7 +15,7 @@ network_check
 update_os
 
 msg_info "Installing Dependencies"
-$STD apk add openjdk11 
+$STD apk add openjdk11
 msg_ok "Installed Dependencies"
 
 msg_info "Installing JDownloader"
@@ -24,7 +24,7 @@ mkdir /usr/local/JDownloader
 cd /usr/local/JDownloader
 wget http://installer.jdownloader.org/JDownloader.jar > /dev/null 2>&1
 java -Djava.awt.headless=true -jar JDownloader.jar -norestart > /dev/null 2>&1
-
+msg_ok "Installed JDownloader"
 
 msg_info "Setting up MyJDownloader"
 read -r -p "Enter your MyJDownloader emailadress: " email
@@ -59,7 +59,7 @@ echo '[
 ]' > ./cfg/org.jdownloader.extensions.eventscripter.EventScripterExtension.scripts.json
 
 echo '{
-  "defaultdownloadfolder": "/jdownloader/downloads"
+  "defaultdownloadfolder": "/mnt/Downloads"
 }' > ./cfg/org.jdownloader.settings.GeneralSettings.json
 
 echo '[
@@ -67,8 +67,8 @@ echo '[
 ]' > ./update/versioninfo/JD/extensions.requestedinstalls.json
 
 java -jar JDownloader.jar > log.txt 2>&1 &
-msg_ok "Setting up MyJDownloader"
-msg_ok "Installed JDownloader"
+msg_ok "Setting set for MyJDownloader"
+
 
 motd_ssh
 customize

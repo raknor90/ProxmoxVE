@@ -16,7 +16,7 @@ update_os
 
 msg_info "Installing Dependencies"
 $STD apk add openjdk11
-$STD rc-service java -jar /usr/local/JDownloader.jar > log.txt 2>&1 &
+$STD rc-service java -jar /usr/local/JDownloader/JDownloader.jar > log.txt 2>&1 &
 msg_ok "Installed Dependencies"
 
 msg_info "Installing JDownloader"

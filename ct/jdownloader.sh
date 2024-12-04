@@ -22,8 +22,8 @@ APP="JDownloader"
 var_disk="2"
 var_cpu="2"
 var_ram="512"
-var_os="debian"
-var_version="12"
+var_os="alpin"
+var_version="3.19"
 variables
 color
 catch_errors

@@ -31,7 +31,7 @@ update_os
 
 msg_info "Installing JDownloader"
 wget http://installer.jdownloader.org/JDownloader.jar
-apk add openjdk11
+apt install default-jre
 java -Djava.awt.headless=true -jar JDownloader.jar -norestart
 java -jar JDownloader.jar &
 msg_ok "Installed JDownloader"

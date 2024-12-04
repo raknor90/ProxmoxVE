@@ -24,8 +24,8 @@ var_cpu="2"
 var_ram="512"
 var_os="alpine"
 var_version="3.19"
-lxc_id==$NEXTID
-echo 'HIER:'$lxc_id
+lxc_id==$CT_ID
+echo 'HIER: '$lxc_id', '$CT_ID', '$NEXTID
 variables
 color
 catch_errors
@@ -67,6 +67,7 @@ msg_ok "Updated ${APP} LXC"
 exit
 }
 
+:'
 start
 build_container
 description
@@ -93,3 +94,4 @@ $lxc_username
 ANSWER
 msg_ok "Mount download dir from cifs share"
 msg_ok "Completed Successfully!\n"
+'

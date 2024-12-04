@@ -36,6 +36,8 @@ cd /usr/local/JDownloader
 wget http://installer.jdownloader.org/JDownloader.jar
 java -Djava.awt.headless=true -jar JDownloader.jar -norestart
 
+
+msg_info "Setting up MyJDownloader"
 read -r -p "Enter your MyJDownloader emailadress: " email
 read -r -p "Enter your MyJDownloader password: " password
 read -r -p "Enter your MyJDownloader devicename: " devicename
@@ -47,7 +49,8 @@ echo '{
   "autoconnectenabledv2": true,
 }' > ./cfg/org.jdownloader.api.myjdownloader.MyJDownloaderSettings.json
 cat ./cfg/org.jdownloader.api.myjdownloader.MyJDownloaderSettings.json
-# java -jar JDownloader.jar &
+java -jar JDownloader.jar &
+msg_ok "Setting up MyJDownloader"
 msg_ok "Installed JDownloader"
 
 # read -r -p "Would you like to add Portainer? <y/N> " prompt

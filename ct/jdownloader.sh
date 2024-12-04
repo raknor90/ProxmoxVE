@@ -22,7 +22,7 @@ APP="JDownloader"
 var_disk="2"
 var_cpu="2"
 var_ram="512"
-var_os="alpin"
+var_os="alpine"
 var_version="3.19"
 variables
 color

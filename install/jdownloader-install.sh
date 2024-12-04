@@ -15,8 +15,8 @@ network_check
 update_os
 
 msg_info "Installing Dependencies"
-$STD apk add openjdk11
-$STD rc-service java -jar /usr/local/JDownloader/JDownloader.jar > log.txt 2>&1 &
+$STD apt install default-jre
+# $STD rc-service java -jar /usr/local/JDownloader/JDownloader.jar > log.txt 2>&1 &
 msg_ok "Installed Dependencies"
 
 msg_info "Installing JDownloader"
@@ -70,6 +70,10 @@ echo '[
 java -jar JDownloader.jar > log.txt 2>&1 &
 msg_ok "Setting set for MyJDownloader"
 
+msg_info "Install NordVPN"
+mkdir /usr/local/NordVPN
+cd /usr/local/NordVPN
+sh <(curl -sSf https://downloads.nordcdn.com/apps/linux/install.sh)
 
 motd_ssh
 customize

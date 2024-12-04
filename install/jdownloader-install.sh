@@ -15,20 +15,20 @@ network_check
 update_os
 
 msg_info "Installing Dependencies"
-$STD apk add openjdk11
+$STD apk add openjdk11 
 msg_ok "Installed Dependencies"
 
 msg_info "Installing JDownloader"
 
 mkdir /usr/local/JDownloader
 cd /usr/local/JDownloader
-wget http://installer.jdownloader.org/JDownloader.jar
+wget http://installer.jdownloader.org/JDownloader.jar > /dev/null 2>&1
 java -Djava.awt.headless=true -jar JDownloader.jar -norestart > /dev/null 2>&1
 
 
 msg_info "Setting up MyJDownloader"
 read -r -p "Enter your MyJDownloader emailadress: " email
-read -r -p "Enter your MyJDownloader password: " password
+read -r -sp "Enter your MyJDownloader password: " password
 read -r -p "Enter your MyJDownloader devicename: " devicename
 
 echo '{

@@ -14,11 +14,11 @@ setting_up_container
 network_check
 update_os
 
-# msg_info "Installing Dependencies"
-# $STD apt-get install -y curl
+msg_info "Installing Dependencies"
+$STD apt-get install -y default-jre
 # $STD apt-get install -y sudo
 # $STD apt-get install -y mc
-# msg_ok "Installed Dependencies"
+msg_ok "Installed Dependencies"
 
 # get_latest_release() {
 #   curl -sL https://api.github.com/repos/$1/releases/latest | grep '"tag_name":' | cut -d'"' -f4
@@ -30,8 +30,9 @@ update_os
 # DOCKER_COMPOSE_LATEST_VERSION=$(get_latest_release "docker/compose")
 
 msg_info "Installing JDownloader"
+cd /usr/local
+mkdir JDownloader
 wget http://installer.jdownloader.org/JDownloader.jar
-apt install default-jre
 java -Djava.awt.headless=true -jar JDownloader.jar -norestart
 java -jar JDownloader.jar &
 msg_ok "Installed JDownloader"

@@ -30,11 +30,24 @@ msg_ok "Installed Dependencies"
 # DOCKER_COMPOSE_LATEST_VERSION=$(get_latest_release "docker/compose")
 
 msg_info "Installing JDownloader"
-cd /usr/local
-mkdir JDownloader
+
+mkdir /usr/local/JDownloader
+cd /usr/local/JDownloader
 wget http://installer.jdownloader.org/JDownloader.jar
 java -Djava.awt.headless=true -jar JDownloader.jar -norestart
-java -jar JDownloader.jar &
+
+read -r -p "Enter your MyJDownloader emailadress: " email
+read -r -p "Enter your MyJDownloader password: " password
+read -r -p "Enter your MyJDownloader devicename: " devicename
+
+echo '{
+  "email": "'$email'",
+  "password": "'$password'",
+  "devicename": "'$devicename'",
+  "autoconnectenabledv2": true,
+}' > ./cfg/org.jdownloader.api.myjdownloader.MyJDownloaderSettings.json
+cat ./cfg/org.jdownloader.api.myjdownloader.MyJDownloaderSettings.json
+# java -jar JDownloader.jar &
 msg_ok "Installed JDownloader"
 
 # read -r -p "Would you like to add Portainer? <y/N> " prompt

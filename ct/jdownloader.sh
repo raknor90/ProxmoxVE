@@ -72,6 +72,11 @@ start
 build_container
 description
 
+echo "lxc.cgroup2.devices.allow: c 10:200 rwm" >> "/etc/pve/lxc/$NEXTID.conf"
+echo "lxc.mount.entry: /dev/net dev/net none bind,create=dir" >> "/etc/pve/lxc/$NEXTID.conf"
+chown 100000:100000 /dev/net/tun
+ls -l /dev/net/tun
+
 msg_info "Mount download dir from cifs share"
 echo ''
 read -p  "    Enter the folder name (e.g., nas_rwx): " folder_name
@@ -93,3 +98,6 @@ $lxc_username
 ANSWER
 msg_ok "Mounted download dir from cifs share "
 msg_ok "Completed Successfully!\n"
+
+
+

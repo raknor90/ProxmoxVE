@@ -16,6 +16,10 @@ update_os
 
 msg_info "Installing Dependencies"
 $STD apt-get install -y default-jre
+$STD apt-get install -y unzip
+$STD apt-get install -y sudo
+$STD apt-get install -y curl
+$STD apt-get install -y openvpn
 # $STD rc-service java -jar /usr/local/JDownloader/JDownloader.jar > log.txt 2>&1 &
 msg_ok "Installed Dependencies"
 
@@ -70,14 +74,82 @@ echo '[
 java -jar JDownloader.jar > log.txt 2>&1 &
 msg_ok "Setting set for MyJDownloader"
 
-msg_info "Install NordVPN"
-mkdir /usr/local/NordVPN
-cd /usr/local/NordVPN
-sh <(wget -qO - https://downloads.nordcdn.com/apps/linux/install.sh)
-nordvpn login
+msg_info "Installing NordVPN"
+cd
+script='#!/bin/bash\
+mkdir -p /dev/net
+mknod /dev/net/tun c 10 200
+chmod 600 /dev/net/tun
+
+/etc/init.d/openvpn restart'
+echo -e $script > OpenVPNfix.sh
+chmod 775 OpenVPNfix.sh
+cd /etc/openvpn
+wget https://downloads.nordcdn.com/configs/archives/servers/ovpn.zip
+unzip ovpn.zip
+rm ovpn.zip
+
+read -r -p "Enter your NordVPN username: " NordVPNusername
+read -r -sp "Enter your NordVPN password: " NordVPNpassword
+
+script="$NordVPNusername\n$NordVPNpassword"
+echo -e $script > /etc/openvpn/ovpn_tcp/pass.txt
+
+sh -c 'openvpn --config /etc/openvpn/ovpn_tcp/de1151.nordvpn.com.tcp.ovpn --auth-user-pass /etc/openvpn/ovpn_tcp/pass.txt' & JDVPN
+sh -c 'java -Djava.awt.headless=true -jar JDownloader.jar > /dev/null 2>&1' & JD
+msg_ok "Installed NordVPN"
+
+msg_info "Installing Filebot"
+# curl -fsSL https://raw.githubusercontent.com/filebot/plugins/master/installer/deb.sh | sh -xu
+msg_ok "Installed Filebot"
+
+msg_info "Configure Autostart"
+
+cat > /etc/systemd/system/nordvpn.service <<EOL
+[Unit]
+Description=NordVPN Service
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=openvpn --config /etc/openvpn/ovpn_tcp/de1151.nordvpn.com.tcp.ovpn --auth-user-pass /etc/openvpn/ovpn_tcp/pass.txt
+RemainAfterExit=yes
+
+User=root
+Group=root
+
+[Install]
+WantedBy=jdownloader.service
+EOL
+
+cat > /etc/systemd/system/jdownloader.service <<EOL
+[Unit]
+Description=JDownloader Service
+After=network.target
+
+[Service]
+Environment=JD_HOME=/usr/local/JDownloader
+Type=oneshot
+ExecStart=java -jar /usr/local/JDownloader/JDownloader.jar
+RemainAfterExit=yes
+
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
+EOL
+systemctl enable nordvpn.service
+systemctl enable jdownloader.service
+
+msg_ok "AutoStart configured"
 
 motd_ssh
 customize
+
+
+#java -Djava.awt.headless=true -jar JDownloader.jar > /dev/null 2>&1
+
 
 # msg_info "Cleaning up"
 # $STD apt-get -y autoremove

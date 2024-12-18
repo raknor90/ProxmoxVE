@@ -2,7 +2,7 @@
     "name": "Webmin System Administration",
     "slug": "webmin",
     "categories": [
-        16
+        11
     ],
     "date_created": "2024-05-02",
     "type": "misc",
@@ -33,7 +33,7 @@
     "notes": [
         {
             "text": "Execute within an existing LXC Console",
-            "type": "warning"
+            "type": "info"
         }
     ]
 }

@@ -139,7 +139,6 @@ Group=root
 [Install]
 WantedBy=multi-user.target
 EOL
-# systemctl enable jdvpn.service
 systemctl enable jdownloader.service
 systemctl start jdownloader.service
 

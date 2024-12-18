@@ -16,9 +16,176 @@ All LXC instances created using this repository come pre-installed with Midnight
 > [!IMPORTANT]
 Do not break established syntax in this file, as it is automatically updated by a Github Workflow
 
+## 2024-12-18
+
+### Changed
+
+### ✨ New Scripts
+
+- New script: Part-DB LXC [@bvdberg01](https://github.com/bvdberg01) ([#591](https://github.com/community-scripts/ProxmoxVE/pull/591))
+
+### 🌐 Website
+
+- New Metadata Category: "Coding & AI" [@newzealandpaul](https://github.com/newzealandpaul) ([#890](https://github.com/community-scripts/ProxmoxVE/pull/890))
+- Moved Webmin to "Server & Networking" [@newzealandpaul](https://github.com/newzealandpaul) ([#891](https://github.com/community-scripts/ProxmoxVE/pull/891))
+
+## 2024-12-17
+
+### Changed
+
+### 🚀 Updated Scripts
+
+- Fix Alpine-Nextcloud: Bump PHP Version to 8.3 [@michelroegl-brunner](https://github.com/michelroegl-brunner) ([#865](https://github.com/community-scripts/ProxmoxVE/pull/865))
+- Correction of Jellyfin CT Port [@mneten](https://github.com/mneten) ([#884](https://github.com/community-scripts/ProxmoxVE/pull/884))
+- fix spinner on lxc-ip-tag [@MickLesk](https://github.com/MickLesk) ([#876](https://github.com/community-scripts/ProxmoxVE/pull/876))
+- Fix Keycloak Installation [@MickLesk](https://github.com/MickLesk) ([#874](https://github.com/community-scripts/ProxmoxVE/pull/874))
+- Fix ports ressources [@MickLesk](https://github.com/MickLesk) ([#867](https://github.com/community-scripts/ProxmoxVE/pull/867))
+
+### 🧰 Maintenance
+
+- Small Changes to the PR Template [@michelroegl-brunner](https://github.com/michelroegl-brunner) ([#862](https://github.com/community-scripts/ProxmoxVE/pull/862))
+
+### ❔ Unlabelled
+
+- calculate terminal size for header_info [@MickLesk](https://github.com/MickLesk) ([#879](https://github.com/community-scripts/ProxmoxVE/pull/879))
+- Fix header creation with figlet for alpine [@MickLesk](https://github.com/MickLesk) ([#869](https://github.com/community-scripts/ProxmoxVE/pull/869))
+
+## 2024-12-16
+
+### Changed
+
+### 💥 Breaking Changes
+
+- Massive Update: build.func | install.func | create_lxc.sh (Part 1) [@MickLesk](https://github.com/MickLesk) ([#643](https://github.com/community-scripts/ProxmoxVE/pull/643))
+- Update ALL CT's to new default (Part 2) [@MickLesk](https://github.com/MickLesk) ([#710](https://github.com/community-scripts/ProxmoxVE/pull/710))
+
+### ✨ New Scripts
+
+- New Script: LXC IP-Tag [@MickLesk](https://github.com/MickLesk) ([#536](https://github.com/community-scripts/ProxmoxVE/pull/536))
+
+### 🚀 Updated Scripts
+
+- Increase Size | Description & Download-URL of Debian VM [@MickLesk](https://github.com/MickLesk) ([#837](https://github.com/community-scripts/ProxmoxVE/pull/837))
+- Update Script: Remove Docker Compose Question [@michelroegl-brunner](https://github.com/michelroegl-brunner) ([#847](https://github.com/community-scripts/ProxmoxVE/pull/847))
+
+### 🌐 Website
+
+- Bump nanoid from 3.3.7 to 3.3.8 in /frontend [@dependabot[bot]](https://github.com/dependabot[bot]) ([#845](https://github.com/community-scripts/ProxmoxVE/pull/845))
+
+### ❔ Unlabelled
+
+- Fix SSH root access in install.func [@havardthom](https://github.com/havardthom) ([#858](https://github.com/community-scripts/ProxmoxVE/pull/858))
+- Fix variable name for CT_TYPE override [@remz1337](https://github.com/remz1337) ([#855](https://github.com/community-scripts/ProxmoxVE/pull/855))
+- Keeps the same style after writing the SEARCH icon [@remz1337](https://github.com/remz1337) ([#851](https://github.com/community-scripts/ProxmoxVE/pull/851))
+
+## 2024-12-13
+
+### Changed
+
+### 🚀 Updated Scripts
+
+- Fix Keycloak Update Function [@MickLesk](https://github.com/MickLesk) ([#762](https://github.com/community-scripts/ProxmoxVE/pull/762))
+- Fix config bug in Alpine Vaultwarden [@havardthom](https://github.com/havardthom) ([#775](https://github.com/community-scripts/ProxmoxVE/pull/775))
+
+### 🌐 Website
+
+- Change MISC from red to green [@MickLesk](https://github.com/MickLesk) ([#815](https://github.com/community-scripts/ProxmoxVE/pull/815))
+- Update some JSON Files for Website [@MickLesk](https://github.com/MickLesk) ([#812](https://github.com/community-scripts/ProxmoxVE/pull/812))
+- Update Notes & Documentation for Proxmox Backup Server [@MickLesk](https://github.com/MickLesk) ([#804](https://github.com/community-scripts/ProxmoxVE/pull/804))
+
+### 🧰 Maintenance
+
+- Github: Optimize Issue Template & PR Template [@MickLesk](https://github.com/MickLesk) ([#802](https://github.com/community-scripts/ProxmoxVE/pull/802))
+
+## 2024-12-12
+
+### Changed
+
+### 🚀 Updated Scripts
+
+- Update jellyfin.sh / Fix infinite loop [@gerpo](https://github.com/gerpo) ([#792](https://github.com/community-scripts/ProxmoxVE/pull/792))
+
+### 🌐 Website
+
+- Fix port and website in nextcloudpi.json [@PhoenixEmik](https://github.com/PhoenixEmik) ([#790](https://github.com/community-scripts/ProxmoxVE/pull/790))
+- Add post-install note to mqtt.json [@havardthom](https://github.com/havardthom) ([#783](https://github.com/community-scripts/ProxmoxVE/pull/783))
+
+### 🧰 Maintenance
+
+- Filter pull requests on main branch in changelog-pr.yml [@havardthom](https://github.com/havardthom) ([#793](https://github.com/community-scripts/ProxmoxVE/pull/793))
+- Fix Z-Wave JS UI Breaking Change in CHANGELOG.md [@havardthom](https://github.com/havardthom) ([#781](https://github.com/community-scripts/ProxmoxVE/pull/781))
+
+## 2024-12-09
+
+### Changed
+
+### 🚀 Updated Scripts
+
+- Fix PostgreSQL password bug in Umami install [@michelroegl-brunner](https://github.com/michelroegl-brunner) ([#750](https://github.com/community-scripts/ProxmoxVE/pull/750))
+
+## 2024-12-08
+
+### Changed
+
+### 🚀 Updated Scripts
+
+- Use MongoDB 4.4 in Unifi for non-AVX users [@havardthom](https://github.com/havardthom) ([#691](https://github.com/community-scripts/ProxmoxVE/pull/691))
+
+### 🌐 Website
+
+- Move homarr to Dashboards section [@CrazyWolf13](https://github.com/CrazyWolf13) ([#740](https://github.com/community-scripts/ProxmoxVE/pull/740))
+
+## 2024-12-07
+
+### Changed
+
+### 🚀 Updated Scripts
+
+- Zigbee2MQTT: Remove dev branch choice until v2.0.0 release [@havardthom](https://github.com/havardthom) ([#702](https://github.com/community-scripts/ProxmoxVE/pull/702))
+- Fix Hoarder build failure by installing Chromium stable [@vhsdream](https://github.com/vhsdream) ([#723](https://github.com/community-scripts/ProxmoxVE/pull/723))
+
+### 🌐 Website
+
+- Bugfix: Include script name in website search [@havardthom](https://github.com/havardthom) ([#731](https://github.com/community-scripts/ProxmoxVE/pull/731))
+
+### ❔ Unlabelled
+
+- Fix broken build.func [@havardthom](https://github.com/havardthom) ([#736](https://github.com/community-scripts/ProxmoxVE/pull/736))
+
+## 2024-12-06
+
+### Changed
+
+### 🚀 Updated Scripts
+
+- Fix bugs in Komga update [@DysfunctionalProgramming](https://github.com/DysfunctionalProgramming) ([#717](https://github.com/community-scripts/ProxmoxVE/pull/717))
+- Bookstack: Fix Update function composer [@michelroegl-brunner](https://github.com/michelroegl-brunner) ([#700](https://github.com/community-scripts/ProxmoxVE/pull/700))
+
+### 🌐 Website
+
+- fix: note component in json-editor getting out of focus when typing and revert theme switch animation [@BramSuurdje](https://github.com/BramSuurdje) ([#706](https://github.com/community-scripts/ProxmoxVE/pull/706))
+
+### 🧰 Maintenance
+
+- Update frontend CI/CD workflow [@havardthom](https://github.com/havardthom) ([#703](https://github.com/community-scripts/ProxmoxVE/pull/703))
+
+## 2024-12-05
+
+### Changed
+
+### 🚀 Updated Scripts
+
+- PostgreSQL: Change authentication method from peer to md5 for UNIX sockets [@michelroegl-brunner](https://github.com/michelroegl-brunner) ([#650](https://github.com/community-scripts/ProxmoxVE/pull/650))
+- Fix stdout in unifi.sh [@michelroegl-brunner](https://github.com/michelroegl-brunner) ([#688](https://github.com/community-scripts/ProxmoxVE/pull/688))
+- Fix `rm` bug in Vikunja update [@michelroegl-brunner](https://github.com/michelroegl-brunner) ([#692](https://github.com/community-scripts/ProxmoxVE/pull/692))
+
 ## 2024-12-04
 
 ### Changed
+
+### 🚀 Updated Scripts
+
+- Update Spelling 'Environment' in nginxproxymanager [@MathijsG](https://github.com/MathijsG) ([#676](https://github.com/community-scripts/ProxmoxVE/pull/676))
 
 ### 🌐 Website
 
@@ -90,13 +257,17 @@ Do not break established syntax in this file, as it is automatically updated by 
 
 ### Changed
 
+### 💥 Breaking Changes
+
+- Fix Z-Wave JS UI script [@MickLesk](https://github.com/MickLesk) ([#546](https://github.com/community-scripts/ProxmoxVE/pull/546))
+  - [Migration guide](https://github.com/community-scripts/ProxmoxVE/discussions/635)
+
 ### 🚀 Updated Scripts
 
 - Add vitest, add json validation tests, fix broken json files [@havardthom](https://github.com/havardthom) ([#566](https://github.com/community-scripts/ProxmoxVE/pull/566))
 - Add update script to Pocketbase [@dsiebel](https://github.com/dsiebel) ([#535](https://github.com/community-scripts/ProxmoxVE/pull/535))
 - Fix MongoDB install in Unifi script [@havardthom](https://github.com/havardthom) ([#564](https://github.com/community-scripts/ProxmoxVE/pull/564))
 - Remove changing DISK_REF for zfspool mikrotik-routeros.sh [@tjcomserv](https://github.com/tjcomserv) ([#529](https://github.com/community-scripts/ProxmoxVE/pull/529))
-- Fix Z-Wave JS UI script [@MickLesk](https://github.com/MickLesk) ([#546](https://github.com/community-scripts/ProxmoxVE/pull/546))
 
 ### 🌐 Website
 

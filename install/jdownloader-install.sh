@@ -20,7 +20,6 @@ $STD apt-get install -y unzip
 $STD apt-get install -y sudo
 $STD apt-get install -y curl
 $STD apt-get install -y openvpn
-# $STD rc-service java -jar /usr/local/JDownloader/JDownloader.jar > log.txt 2>&1 &
 msg_ok "Installed Dependencies"
 
 msg_info "Installing JDownloader"
@@ -93,7 +92,7 @@ read -r -p "Enter your NordVPN username: " NordVPNusername
 read -r -sp "Enter your NordVPN password: " NordVPNpassword
 
 script="$NordVPNusername\n$NordVPNpassword"
-echo -e $script > /etc/openvpn/ovpn_tcp/pass.txt
+echo -e $script > /etc/openvpn/pass.txt
 
 sh -c 'openvpn --config /etc/openvpn/ovpn_tcp/de1151.nordvpn.com.tcp.ovpn --auth-user-pass /etc/openvpn/ovpn_tcp/pass.txt' & JDVPN
 sh -c 'java -Djava.awt.headless=true -jar JDownloader.jar > /dev/null 2>&1' & JD
@@ -105,32 +104,35 @@ msg_ok "Installed Filebot"
 
 msg_info "Configure Autostart"
 
-cat > /etc/systemd/system/nordvpn.service <<EOL
+cat > /etc/systemd/system/jdvpn.service <<EOL
 [Unit]
-Description=NordVPN Service
+Description=jdvpn Service
 After=network.target
 
 [Service]
-Type=oneshot
-ExecStart=openvpn --config /etc/openvpn/ovpn_tcp/de1151.nordvpn.com.tcp.ovpn --auth-user-pass /etc/openvpn/ovpn_tcp/pass.txt
-RemainAfterExit=yes
+Type=simple
+ExecStart=openvpn --config /etc/openvpn/ovpn_tcp/us8519.nordvpn.com.tcp.ovpn --auth-user-pass /etc/openvpn/pass.txt
+RemainAfterExit=no
 
 User=root
 Group=root
 
 [Install]
-WantedBy=jdownloader.service
+RequiredBy=jdownloader.service
 EOL
 
 cat > /etc/systemd/system/jdownloader.service <<EOL
 [Unit]
 Description=JDownloader Service
-After=network.target
+After=jdvpn.service
+Requires=jdvpn.service
+
 
 [Service]
 Environment=JD_HOME=/usr/local/JDownloader
-Type=oneshot
+Type=simple
 ExecStart=java -jar /usr/local/JDownloader/JDownloader.jar
+PIDFile=/usr/local/JDownloader/JDownloader.pid
 RemainAfterExit=yes
 
 User=root
@@ -139,7 +141,7 @@ Group=root
 [Install]
 WantedBy=multi-user.target
 EOL
-systemctl enable nordvpn.service
+# systemctl enable jdvpn.service
 systemctl enable jdownloader.service
 
 msg_ok "AutoStart configured"
@@ -148,13 +150,10 @@ motd_ssh
 customize
 
 
-#java -Djava.awt.headless=true -jar JDownloader.jar > /dev/null 2>&1
-
-
-# msg_info "Cleaning up"
-# $STD apt-get -y autoremove
-# $STD apt-get -y autoclean
-# msg_ok "Cleaned"
+msg_info "Cleaning up"
+$STD apt-get -y autoremove
+$STD apt-get -y autoclean
+msg_ok "Cleaned"
 
 
 # read -r -p "Would you like to add Portainer? <y/N> " prompt

@@ -13,7 +13,6 @@ var_ram="512"
 var_os="debian"
 var_version="12"
 var_unprivileged="1"
-APP="Alpine-Docker"
 
 # App Output & Base Settings
 header_info "$APP"

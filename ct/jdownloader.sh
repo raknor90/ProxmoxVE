@@ -1,58 +1,28 @@
 #!/usr/bin/env bash
 source <(curl -s https://raw.githubusercontent.com/raknor90/ProxmoxVE/main/misc/build.func)
-# Copyright (c) 2021-2024 tteck
-# Author: tteck (tteckster)
-# License: MIT
+# Copyright (c) 2021-2024 raknor90
+# Author: raknor90
 # https://github.com/raknor90/ProxmoxVE/raw/main/LICENSE
 
-function header_info {
-clear
-cat <<"EOF"
-       ______                      __                __         
-      / / __ \____ _      ______  / /___  ____ _____/ /__  _____
- __  / / / / / __ \ | /| / / __ \/ / __ \/ __ `/ __  / _ \/ ___/
-/ /_/ / /_/ / /_/ / |/ |/ / / / / / /_/ / /_/ / /_/ /  __/ /    
-\____/_____/\____/|__/|__/_/ /_/_/\____/\__,_/\__,_/\___/_/     
-
-EOF
-}
-header_info
-echo -e "Loading..."
+# App Default Values
 APP="JDownloader"
+var_tags="jdownloader;debian"
 var_disk="2"
 var_cpu="2"
 var_ram="512"
 var_os="debian"
 var_version="12"
+var_unprivileged="1"
+APP="Alpine-Docker"
 
+# App Output & Base Settings
+header_info "$APP"
+base_settings
 
 variables
 color
 catch_errors
 
-function default_settings() {
-  CT_TYPE="1"
-  PW=""
-  CT_ID=$NEXTID
-  HN=$NSAPP
-  DISK_SIZE="$var_disk"
-  CORE_COUNT="$var_cpu"
-  RAM_SIZE="$var_ram"
-  BRG="vmbr0"
-  NET="dhcp"
-  GATE=""
-  APT_CACHER=""
-  APT_CACHER_IP=""
-  DISABLEIP6="no"
-  MTU=""
-  SD=""
-  NS=""
-  MAC=""
-  VLAN=""
-  SSH="no"
-  VERB="no"
-  echo_default
-}
 
 function update_script() {
 header_info

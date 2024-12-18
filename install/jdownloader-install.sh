@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
 
-# Copyright (c) 2021-2024 tteck
-# Author: tteck (tteckster)
-# License: MIT
+# Copyright (c) 2021-2024 raknor90
+# Author: raknor90
 # https://github.com/raknor90/ProxmoxVE/raw/main/LICENSE
-
-source /dev/stdin <<<"$FUNCTIONS_FILE_PATH"
+source /dev/stdin <<< "$FUNCTIONS_FILE_PATH"
 
 color
 verb_ip6
